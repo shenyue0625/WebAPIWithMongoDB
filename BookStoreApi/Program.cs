@@ -1,5 +1,6 @@
 using BookStoreApi.Models;
 using BookStoreApi.Services;
+// using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,9 @@ builder.Services.Configure<BookStoreDatabaseSettings>(
     builder.Configuration.GetSection("BookStoreDatabase"));
 
 builder.Services.AddSingleton<BooksService>();
+
+// var multiplexer = ConnectionMultiplexer.Connect("localhost");
+// builder.Services.AddSingleton<IConnectionMultiplexer>(multiplexer);
 
 builder.Services.AddControllers()
      .AddJsonOptions(
